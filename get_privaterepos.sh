@@ -22,4 +22,4 @@
 #
 #	..[].clone_url extracts the value of each "clone_url" key
 #    same as .[]| .clone_url 
-curl -s -u ${GH_USER}:${GH_REPO_TOKEN} -s "${GH_REPOS_URL}?per_page=100&visibility=private" | jq -r ".[].clone_url"
+curl -s -u ${GH_USER}:${GH_REPO_TOKEN} -s "${GH_PRIVATE_REPOS_URL}?per_page=100&visibility=private" | jq -r ".[].clone_url"
