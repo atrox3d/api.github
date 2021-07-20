@@ -1,4 +1,5 @@
 import os
+from string import Template
 import json
 
 
@@ -31,10 +32,14 @@ def set_expandedvars(filepath):
                 if "=" in line:
                     name, value = line.split("=")
                     # print(name, value)
-                    os.environ[name] = os.path.expandvars(value)
-                    value = os.environ[name]
-                    # print(name, value)
-                    variables[name] = value
+                    try:
+                        expanded = Template(value).substitute(os.environ)
+                        os.environ[name] = expanded
+                        value = os.environ[name]
+                        # print(name, value)
+                        variables[name] = value
+                    except KeyError as ke:
+                        raise KeyError(f"cannot expand {name}={value} with missing variable: {ke}")
     return variables
 
 
