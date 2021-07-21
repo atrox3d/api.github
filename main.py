@@ -11,4 +11,10 @@ except KeyError as ke:
     raise SystemExit(f"FATAL| {ke}")
 
 data = gh.get_repos(visibility=api.REPOS_ALL)
-print(f"{len(data)}")
+# print(f"{len(data)}")
+#
+# for d in data:
+#     for k in d.keys():
+#         print(k, d[k], type(d[k]))
+for d in data:
+    print(d["clone_url"])
