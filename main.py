@@ -10,11 +10,14 @@ try:
 except KeyError as ke:
     raise SystemExit(f"FATAL| {ke}")
 
-data = gh.get_repos(visibility=api.REPOS_ALL)
+data = gh.get_repos(visibility=api.REPOS_PUBLIC, print_url=True)
 # print(f"{len(data)}")
 #
 # for d in data:
 #     for k in d.keys():
 #         print(k, d[k], type(d[k]))
+count = 0
 for d in data:
-    print(d["clone_url"])
+    print("private" if d["private"] else "public", d["clone_url"])
+    count += 1
+print(f"total: {count}")

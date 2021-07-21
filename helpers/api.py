@@ -53,7 +53,7 @@ class GithubApi:
         self.response = response
         return response
 
-    def get_repos(self, visibility=REPOS_ALL, per_page=100):
+    def get_repos(self, visibility=REPOS_ALL, per_page=100, print_url=False):
         _json = []
         nextpage = 1
         while nextpage:
@@ -62,6 +62,8 @@ class GithubApi:
                 response = self.api_call(self.public_repos, params=params)
             else:
                 response = self.api_call(self.private_repos, params=params)
+            if print_url:
+                print(response.request.url)
             _json.extend(response.json())
             nextpage = self.nextpage(response)
         return _json
