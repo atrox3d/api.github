@@ -1,6 +1,5 @@
 import requests
 import re
-from string import Template
 
 from helpers.exports import parse_exports
 
