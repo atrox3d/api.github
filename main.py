@@ -1,11 +1,12 @@
 from helpers.exports import parse_exports
-from helpers.api import api_call, get_totalpages
+from helpers.api import GithubApi
 
 try:
-    variables = parse_exports("data/github_export")
+    # variables = parse_exports("data/github_export")
     # print(json.dumps(variables, indent=4))
+    gh = GithubApi.from_export("data/github_export")
 except KeyError as ke:
     raise SystemExit(f"FATAL| {ke}")
 
-response = api_call(url=variables.private_repos, user=variables.user, token=variables.token)
-print(get_totalpages(response))
+response = gh.api_call(url=gh.private_repos)
+print(gh.get_totalpages(response))

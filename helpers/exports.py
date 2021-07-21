@@ -74,4 +74,4 @@ def parse_exports(filepath):
 if __name__ == '__main__':
     variables = parse_exports("../data/github_export")
     # print(json.dumps(variables, indent=4))
-print(variables.__dict__)
+    print(variables.__dict__)
