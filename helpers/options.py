@@ -9,64 +9,75 @@ def get_parser():
         '-user',
         '--user',
         type=str,
+        required=False
     )
     parser.add_argument(
         '-token',
         '--token',
         type=str,
+        required=False
     )
     parser.add_argument(
         '-exportfile',
         '--exportfile',
-        type=str
+        type=str,
+        required=False
     )
     parser.add_argument(
         '-urlapi',
         '--urlapi',
-        type=str
+        type=str,
+        required=False
     )
     parser.add_argument(
         '-templateurlprivate',
         '--templateurlprivate',
-        type=str
+        type=str,
+        required=False
     )
     parser.add_argument(
         '-templateurlpublic',
         '--templateurlpublic',
-        type=str
+        type=str,
+        required=False
     )
     parser.add_argument(
         '-private',
         '--private',
-        type=bool,
-        # action='store_true',
-        default=False
+        # type=bool,
+        action='store_true',
+        default=False,
+        required=False
     )
     parser.add_argument(
         '-public',
         '--public',
         # type=bool,
         action='store_true',
-        default=False
+        default=False,
+        required=False
     )
     parser.add_argument(
         '-all',
         '--all',
         # type=bool,
         action='store_true',
-        default=False
+        default=False,
+        required=False
     )
     parser.add_argument(
         '-printurl',
         '--printurl',
         # type=bool,
         action='store_true',
-        default=False
+        default=False,
+        required=False
     )
     parser.add_argument(
         '-perpage',
         '--perpage',
-        type=int
+        type=int,
+        required=False
     )
     return parser
 
