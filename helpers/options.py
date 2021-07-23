@@ -39,27 +39,27 @@ def get_parser():
         '-private',
         '--private',
         type=bool,
-        action='store_true',
+        # action='store_true',
         default=False
     )
     parser.add_argument(
         '-public',
         '--public',
-        type=bool,
+        # type=bool,
         action='store_true',
         default=False
     )
     parser.add_argument(
         '-all',
         '--all',
-        type=bool,
+        # type=bool,
         action='store_true',
         default=False
     )
     parser.add_argument(
         '-printurl',
         '--printurl',
-        type=bool,
+        # type=bool,
         action='store_true',
         default=False
     )
