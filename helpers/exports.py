@@ -7,7 +7,7 @@ from dataclasses import dataclass
 @dataclass
 class Variables:
     user = ""
-    api = ""
+    urlapi = ""
     token = ""
     public_repos = ""
     private_repos = ""
@@ -62,7 +62,7 @@ def parse_exports(filepath):
     try:
         variables.user = _variables["GH_USER"]
         variables.token = _variables["GH_REPO_TOKEN"]
-        variables.api = _variables["GH_API"]
+        variables.urlapi = _variables["GH_API"]
         variables.private_repos = _variables["GH_PRIVATE_REPOS_URL"]
         variables.public_repos = _variables["GH_PUBLIC_REPOS_URL"]
     except KeyError as ke:

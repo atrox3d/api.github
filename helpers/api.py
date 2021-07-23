@@ -31,11 +31,11 @@ class GithubApi:
             variables = parse_exports(export_path)
             user = variables.user
             token = variables.token
-            api = variables.urlapi
+            urlapi = variables.urlapi
             public_repos = variables.public_repos
             private_repos = variables.private_repos
             # response = None
-            return cls(user, token, api, public_repos, private_repos)
+            return cls(user, token, urlapi, public_repos, private_repos)
         except KeyError as ke:
             raise SystemExit(f"FATAL| {ke}")
 
