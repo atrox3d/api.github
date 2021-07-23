@@ -55,7 +55,9 @@ data = gh.get_repos(visibility=VISIBILITY, print_url=PRINT_URL)
 #     for k in d.keys():
 #         print(k, d[k], type(d[k]))
 if params.filter:
-    data = [item[params.field] for item in data if params.filter in item[params.field]]
+    data = [item[params.field] for item in data if params.filter.lower() in item[params.field].lower()]
+else:
+    data = [item[params.field] for item in data]
 
 count = 0
 for d in data:
