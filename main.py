@@ -46,7 +46,7 @@ if params.private:
 elif params.public:
     VISIBILITY = api.REPOS_PUBLIC
 
-PRINT_URL = params.printurl or True
+PRINT_URL = params.printurl
 
 data = gh.get_repos(visibility=VISIBILITY, print_url=PRINT_URL)
 # print(f"{len(data)}")
