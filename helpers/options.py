@@ -6,6 +6,19 @@ def get_parser():
     parser = argparse.ArgumentParser()
 
     parser.add_argument(
+        '-field',
+        '--field',
+        type=str,
+        required=False,
+        default="clone_url"
+    )
+    parser.add_argument(
+        '-filter',
+        '--filter',
+        type=str,
+        required=False
+    )
+    parser.add_argument(
         '-user',
         '--user',
         type=str,
@@ -44,6 +57,14 @@ def get_parser():
     parser.add_argument(
         '-private',
         '--private',
+        # type=bool,
+        action='store_true',
+        default=False,
+        required=False
+    )
+    parser.add_argument(
+        '-count',
+        '--count',
         # type=bool,
         action='store_true',
         default=False,

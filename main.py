@@ -54,8 +54,14 @@ data = gh.get_repos(visibility=VISIBILITY, print_url=PRINT_URL)
 # for d in data:
 #     for k in d.keys():
 #         print(k, d[k], type(d[k]))
+if params.filter:
+    data = [item[params.field] for item in data if params.filter in item[params.field]]
+
 count = 0
 for d in data:
-    print("private" if d["private"] else "public", d["clone_url"])
+    # print("private" if d["private"] else "public", d["clone_url"])
+    print(d)
     count += 1
-print(f"total: {count}")
+
+if params.count:
+    print(f"total: {count}")
