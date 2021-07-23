@@ -7,19 +7,23 @@ REPOS_PRIVATE = "private"
 REPOS_PUBLIC = "public"
 REPOS_ALL = "all"
 
-TEMPLATE_PUBLIC_REPOS_URL = "{api}/users/{user}/repos"
-TEMPLATE_PRIVATE_REPOS_URL = "{api}/user/repos"
+API_URL = "https://api.github.com"
+TEMPLATE_PUBLIC_REPOS_URL = "{urlapi}/users/{user}/repos"
+TEMPLATE_PRIVATE_REPOS_URL = "{urlapi}/user/repos"
 
 
 class GithubApi:
 
-    def __init__(self, user, token, api, public_repos=None, private_repos=None):
+    def __init__(self, user, token, urlapi=None, public_repos=None, private_repos=None):
+        # self.response = None
+        self.update(user, token, urlapi, public_repos, private_repos)
+
+    def update(self, user, token, urlapi=None, public_repos=None, private_repos=None):
         self.user = user
         self.token = token
-        self.api = api
-        self.public_repos = public_repos or TEMPLATE_PUBLIC_REPOS_URL.format(api=api, user=user)
-        self.private_repos = private_repos or TEMPLATE_PRIVATE_REPOS_URL.format(api=api)
-        # self.response = None
+        self.urlapi = urlapi or API_URL
+        self.public_repos = public_repos or TEMPLATE_PUBLIC_REPOS_URL.format(api=urlapi, user=user)
+        self.private_repos = private_repos or TEMPLATE_PRIVATE_REPOS_URL.format(api=urlapi)
 
     @classmethod
     def from_export(cls, export_path):
@@ -27,7 +31,7 @@ class GithubApi:
             variables = parse_exports(export_path)
             user = variables.user
             token = variables.token
-            api = variables.api
+            api = variables.urlapi
             public_repos = variables.public_repos
             private_repos = variables.private_repos
             # response = None
