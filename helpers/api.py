@@ -22,8 +22,8 @@ class GithubApi:
         self.user = user
         self.token = token
         self.urlapi = urlapi or API_URL
-        self.public_repos = public_repos or TEMPLATE_PUBLIC_REPOS_URL.format(api=urlapi, user=user)
-        self.private_repos = private_repos or TEMPLATE_PRIVATE_REPOS_URL.format(api=urlapi)
+        self.public_repos = public_repos or TEMPLATE_PUBLIC_REPOS_URL.format(urlapi=urlapi, user=user)
+        self.private_repos = private_repos or TEMPLATE_PRIVATE_REPOS_URL.format(urlapi=urlapi)
 
     @classmethod
     def from_export(cls, export_path):

@@ -40,8 +40,13 @@ else:
         params.urlapi or gh.urlapi
     )
 
-VISIBILITY = params.visibility or api.REPOS_ALL
-PRINT_URL = params.print_url or True
+VISIBILITY = api.REPOS_ALL
+if params.private:
+    VISIBILITY = api.REPOS_PRIVATE
+elif params.public:
+    VISIBILITY = api.REPOS_PUBLIC
+
+PRINT_URL = params.printurl or True
 
 data = gh.get_repos(visibility=VISIBILITY, print_url=PRINT_URL)
 # print(f"{len(data)}")
