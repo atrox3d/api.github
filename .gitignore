@@ -2,3 +2,4 @@
 /data/
 /venv/
 .api.github.source
+__pycache__
